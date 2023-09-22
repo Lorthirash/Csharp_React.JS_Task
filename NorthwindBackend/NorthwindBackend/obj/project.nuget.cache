@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8CroAHxE9CJ9dHfFv7pttUYUMo72mn8mLMaSkoFLKOYqzXdxEhAXCYkS1k3s+aW5zwxS/6f/TLx107IagVX6lA==",
+  "dgSpecHash": "pziSSPnm1D+Bn7kO9OG+shIvDoL4JIV6dBCqTkOQjknp/t6NHgukHCCBoZfg721rXNeULCE2mLgYYvuL8AnUzQ==",
   "success": true,
   "projectFilePath": "C:\\Csharp\\Csharp_React.JS_Task\\NorthwindBackend\\NorthwindBackend\\NorthwindBackend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Lorth\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
@@ -12,10 +13,12 @@
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.odata.edm\\7.18.0\\microsoft.odata.edm.7.18.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\microsoft.spatial\\7.18.0\\microsoft.spatial.7.18.0.nupkg.sha512",
+    "C:\\Users\\Lorth\\.nuget\\packages\\moq\\4.20.69\\moq.4.20.69.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "C:\\Users\\Lorth\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\system.text.encodings.web\\4.7.2\\system.text.encodings.web.4.7.2.nupkg.sha512",
     "C:\\Users\\Lorth\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512"
