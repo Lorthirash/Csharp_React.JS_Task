@@ -28,5 +28,18 @@ namespace NorthwindBackend.Controllers
                 return StatusCode(500, $"Hiba történt: {ex.Message}");
             }
         }
+        [HttpGet("SupplierProductInfo")]
+        public IActionResult GetGetSupplierProductInfo()
+        {
+            try
+            {
+                var supplierOrderTotals = _productService.GetSupplierProductInfo();
+                return Ok(supplierOrderTotals);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Hiba történt: {ex.Message}");
+            }
+        }
     }
 }
