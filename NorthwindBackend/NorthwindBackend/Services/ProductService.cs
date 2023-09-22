@@ -1,4 +1,5 @@
 ﻿using Microsoft.OData.Client;
+using Northwind_Backend.Models;
 using NorthwindBackend.Models;
 using NorthwindBackend.Services.Interfaces;
 
@@ -23,6 +24,39 @@ namespace NorthwindBackend.Services
 
             // Visszaadjuk az elérhető termékek listáját
             return query.ToList();
+        }
+
+        // Lekéri az összes beszállítót, valamint az általuk szállított termékeket és az ezekből rendelt összértéket
+        public IList<SupplierInfo> GetSupplierProductInfo()
+        {
+            // Lekérdezzük az összes beszállítót, terméket és rendelés részletet az OData szolgáltatásból
+            var suppliers = _context.CreateQuery<Supplier>("Suppliers").ToList();
+            var products = _context.CreateQuery<Product>("Products").ToList();
+            var orderDetails = _context.CreateQuery<OrderDetail>("Order_Details")
+                .Expand("Order")
+                .ToList();
+
+            // Létrehozzuk a SupplierInfo objektumokat a beszállítókhoz és a hozzájuk kapcsolódó termékeket
+            var supplierInfo = suppliers.Select(supplier => new SupplierInfo
+            {
+                SupplierID = supplier.SupplierID,
+                CompanyName = supplier.CompanyName,
+                Products = products
+                    .Where(product => product.SupplierID == supplier.SupplierID)
+                    .Select(product => new ProductInfo
+                    {
+                        ProductID = product.ProductID,
+                        ProductName = product.ProductName,
+                        // Számoljuk az összes rendelés összértékét az adott termékből
+                        TotalOrderedValue = orderDetails
+                            .Where(od => od.ProductID == product.ProductID)
+                            .Sum(od => od.UnitPrice * od.Quantity)
+                    })
+                    .ToList()
+            });
+
+            // Visszaadjuk a beszállítók és az általuk szállított termékek listáját
+            return supplierInfo.ToList();
         }
     }
 }
