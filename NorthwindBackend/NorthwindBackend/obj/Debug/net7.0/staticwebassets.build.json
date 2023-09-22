@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zts7BRKF8C1LrwRFhZmuCSdb9yyM05//gt66mF1ebeI=",
+  "Source": "NorthwindBackend",
+  "BasePath": "_content/NorthwindBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
