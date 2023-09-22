@@ -36,3 +36,5 @@ C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\obj\Debug\net7.
 C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\obj\Debug\net7.0\NorthwindBackend.pdb
 C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\obj\Debug\net7.0\NorthwindBackend.genruntimeconfig.cache
 C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\obj\Debug\net7.0\ref\NorthwindBackend.dll
+C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\bin\Debug\net7.0\Castle.Core.dll
+C:\Csharp\Csharp_React.JS_Task\NorthwindBackend\NorthwindBackend\bin\Debug\net7.0\Moq.dll

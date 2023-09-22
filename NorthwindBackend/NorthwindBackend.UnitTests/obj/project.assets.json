@@ -881,6 +881,7 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.11",
           "Microsoft.OData.Client": "7.18.0",
           "Microsoft.OData.Core": "7.18.0",
+          "Moq": "4.20.69",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "compile": {

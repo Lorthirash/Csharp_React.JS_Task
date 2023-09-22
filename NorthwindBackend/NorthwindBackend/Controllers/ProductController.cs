@@ -16,7 +16,7 @@ namespace NorthwindBackend.Controllers
         }
 
         [HttpGet("AvailableProducts")]
-        public IActionResult GetProducts()
+        public IActionResult GetAvailableProducts()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace NorthwindBackend.Controllers
             }
         }
         [HttpGet("SupplierProductInfo")]
-        public IActionResult GetGetSupplierProductInfo()
+        public IActionResult GetSupplierProductInfo()
         {
             try
             {
