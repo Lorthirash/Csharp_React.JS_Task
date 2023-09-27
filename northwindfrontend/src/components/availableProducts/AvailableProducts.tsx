@@ -10,7 +10,9 @@ function AvailableProduct() {
       try {
         const availableProducts = await productService.getAvailableProducts();
         setProducts(availableProducts);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Hiba történt a kérés során:", error);
+      }
     }
 
     fetchProducts();
