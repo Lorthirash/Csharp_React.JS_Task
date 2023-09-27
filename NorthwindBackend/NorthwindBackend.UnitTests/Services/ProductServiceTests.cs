@@ -9,16 +9,15 @@ namespace NorthwindBackend.UnitTests.Services
     public class ProductServiceTests
     {
         [TestMethod]
-        public void GetAvailableProducts_ReturnsNonEmptyList()
+        public async Task GetAvailableProducts_ReturnsNonEmptyList()
         {
             // Arrange
             var httpClientMock = new Mock<HttpClient>();
-            
 
             var productService = new ProductService(httpClientMock.Object);
 
             // Act
-            var availableProducts = productService.GetAvailableProducts();
+            var availableProducts = await productService.GetAvailableProductsAsync();
 
             // Assert
             Assert.IsNotNull(availableProducts);
@@ -27,22 +26,22 @@ namespace NorthwindBackend.UnitTests.Services
         }
 
         [TestMethod]
-        public void GetSupplierProductInfo_ReturnsNonEmptyList()
+        public async Task GetSupplierProductInfo_ReturnsNonEmptyList()
         {
             // Arrange
             var httpClientMock = new Mock<HttpClient>();
-           
 
             var productService = new ProductService(httpClientMock.Object);
 
             // Act
-            var supplierProductInfo = productService.GetSupplierProductInfo();
+            var supplierProductInfo = await productService.GetSupplierProductInfoAsync();
 
             // Assert
             Assert.IsNotNull(supplierProductInfo);
             Assert.IsTrue(supplierProductInfo.Count > 0);
             Assert.AreEqual(29, supplierProductInfo.Count);
         }
+
     }
 }
 

@@ -5,22 +5,18 @@ using Northwind_Backend.Models;
 using NorthwindBackend.Controllers;
 using NorthwindBackend.Models;
 using NorthwindBackend.Services.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NorthwindBackend.UnitTests.Controllers
 {
-   
-        [TestClass]
-        public class ProductControllerTests
-        {
+    [TestClass]
+    public class ProductControllerTests
+    {
         [TestMethod]
-        public void GetProducts_ReturnsOkResult()
+        public async Task GetAvailableProducts_ReturnsOkResult()
         {
-            // Arrange
             var productServiceMock = new Mock<IProductService>();
             var mockProducts = new List<Product>
             {
@@ -62,84 +58,74 @@ namespace NorthwindBackend.UnitTests.Controllers
                     UnitsOnOrder = 40,
                     ReorderLevel = 15,
                     Discontinued = false
-                },
-                
+                }
             };
-            productServiceMock.Setup(p => p.GetAvailableProducts()).Returns(mockProducts);
+            productServiceMock.Setup(p => p.GetAvailableProductsAsync()).ReturnsAsync(mockProducts);
             var controller = new ProductController(productServiceMock.Object);
 
-            // Act
-            var result = controller.GetAvailableProducts() as OkObjectResult;
+            var result = await controller.GetAvailableProducts();
 
-            // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(StatusCodes.Status200OK, result.StatusCode);
+            Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
 
-            var products = result.Value as List<Product>;
+            var products = (result.Result as OkObjectResult).Value as List<Product>;
             Assert.IsNotNull(products);
             Assert.AreEqual(mockProducts.Count, products.Count);
-            
         }
 
         [TestMethod]
-        public void GetSupplierProductInfo_ReturnsOkResult()
+        public async Task GetSupplierProductInfo_ReturnsOkResult()
         {
-            // Arrange
             var productServiceMock = new Mock<IProductService>();
             var mockSupplierInfo = new List<SupplierInfo>
-        {
-            new SupplierInfo
             {
-                SupplierID = 1,
-                CompanyName = "Beszállító 1",
-                Products = new List<ProductInfo>
+                new SupplierInfo
                 {
-                    new ProductInfo
+                    SupplierID = 1,
+                    CompanyName = "Beszállító 1",
+                    Products = new List<ProductInfo>
                     {
-                        ProductID = 1,
-                        ProductName = "Termék 1",
-                        TotalOrderedValue = 100.0m
-                    },
-                    new ProductInfo
+                        new ProductInfo
+                        {
+                            ProductID = 1,
+                            ProductName = "Termék 1",
+                            TotalOrderedValue = 100.0m
+                        },
+                        new ProductInfo
+                        {
+                            ProductID = 2,
+                            ProductName = "Termék 2",
+                            TotalOrderedValue = 200.0m
+                        }
+                    }
+                },
+                new SupplierInfo
+                {
+                    SupplierID = 2,
+                    CompanyName = "Beszállító 2",
+                    Products = new List<ProductInfo>
                     {
-                        ProductID = 2,
-                        ProductName = "Termék 2",
-                        TotalOrderedValue = 200.0m
+                        new ProductInfo
+                        {
+                            ProductID = 3,
+                            ProductName = "Termék 3",
+                            TotalOrderedValue = 300.0m
+                        }
                     }
                 }
-            },
-            new SupplierInfo
-            {
-                SupplierID = 2,
-                CompanyName = "Beszállító 2",
-                Products = new List<ProductInfo>
-                {
-                    new ProductInfo
-                    {
-                        ProductID = 3,
-                        ProductName = "Termék 3",
-                        TotalOrderedValue = 300.0m
-                    }
-                }
-            },
-           
-        };
+            };
 
-            productServiceMock.Setup(p => p.GetSupplierProductInfo()).Returns(mockSupplierInfo);
+            productServiceMock.Setup(p => p.GetSupplierProductInfoAsync()).ReturnsAsync(mockSupplierInfo);
             var controller = new ProductController(productServiceMock.Object);
 
-            // Act
-            var result = controller.GetSupplierProductInfo() as OkObjectResult;
+            var result = await controller.GetSupplierProductInfo();
 
-            // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(StatusCodes.Status200OK, result.StatusCode);
+            Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
 
-            var supplierInfo = result.Value as List<SupplierInfo>;
+            var supplierInfo = (result.Result as OkObjectResult).Value as List<SupplierInfo>;
             Assert.IsNotNull(supplierInfo);
             Assert.AreEqual(mockSupplierInfo.Count, supplierInfo.Count);
-           
         }
     }
 }
-

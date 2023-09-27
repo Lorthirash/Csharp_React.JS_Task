@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Northwind_Backend.Models;
+using NorthwindBackend.Models;
 using NorthwindBackend.Services.Interfaces;
 
 namespace NorthwindBackend.Controllers
@@ -16,12 +18,12 @@ namespace NorthwindBackend.Controllers
         }
 
         [HttpGet("AvailableProducts")]
-        public IActionResult GetAvailableProducts()
+        public async Task<ActionResult<List<Product>>> GetAvailableProducts()
         {
             try
             {
-                var productList = _productService.GetAvailableProducts();
-                return Ok(productList);
+                List<Product> product = await _productService.GetAvailableProductsAsync();
+                return Ok(product);
             }
             catch (Exception ex)
             {
@@ -29,12 +31,12 @@ namespace NorthwindBackend.Controllers
             }
         }
         [HttpGet("SupplierProductInfo")]
-        public IActionResult GetSupplierProductInfo()
+        public async Task<ActionResult<List<SupplierInfo>>> GetSupplierProductInfo()
         {
             try
             {
-                var supplierOrderTotals = _productService.GetSupplierProductInfo();
-                return Ok(supplierOrderTotals);
+                List<SupplierInfo> supplierInfo =  await _productService.GetSupplierProductInfoAsync();
+                return Ok(supplierInfo);
             }
             catch (Exception ex)
             {

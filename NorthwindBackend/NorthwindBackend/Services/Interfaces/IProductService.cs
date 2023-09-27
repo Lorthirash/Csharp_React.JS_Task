@@ -5,7 +5,9 @@ namespace NorthwindBackend.Services.Interfaces
 {
     public interface IProductService
     {
-        IList<Product> GetAvailableProducts();
-        IList<SupplierInfo> GetSupplierProductInfo();
+      
+        Task<List<Product>> GetAvailableProductsAsync();
+    
+        Task<List<SupplierInfo>> GetSupplierProductInfoAsync();
     }
 }
