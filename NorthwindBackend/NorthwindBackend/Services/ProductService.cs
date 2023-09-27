@@ -16,28 +16,34 @@ namespace NorthwindBackend.Services
         }
 
         // Lekéri az összes olyan terméket, amelyeknél a készlet mennyisége nagyobb, mint 0
-        public IList<Product> GetAvailableProducts()
+        public async Task<List<Product>> GetAvailableProductsAsync()
         {
             // Lekérdezzük az összes terméket az OData szolgáltatásból
-            var query = _context.CreateQuery<Product>("Products").ToList()
-                                .Where(p => p.UnitsInStock > 0);
+            List<Product> query = _context.CreateQuery<Product>("Products")
+                                           .ToList()
+                                           .Where(p => p.UnitsInStock > 0)
+                                           .ToList();
 
             // Visszaadjuk az elérhető termékek listáját
-            return query.ToList();
+            return await Task.FromResult(query);
         }
 
+
+
+
+
         // Lekéri az összes beszállítót, valamint az általuk szállított termékeket és az ezekből rendelt összértéket
-        public IList<SupplierInfo> GetSupplierProductInfo()
+        public async Task<List<SupplierInfo>> GetSupplierProductInfoAsync()
         {
             // Lekérdezzük az összes beszállítót, terméket és rendelés részletet az OData szolgáltatásból
-            var suppliers = _context.CreateQuery<Supplier>("Suppliers").ToList();
-            var products = _context.CreateQuery<Product>("Products").ToList();
-            var orderDetails = _context.CreateQuery<OrderDetail>("Order_Details")
+            List<Supplier> suppliers = _context.CreateQuery<Supplier>("Suppliers").ToList();
+            List<Product> products = _context.CreateQuery<Product>("Products").ToList();
+            List<OrderDetail> orderDetails = _context.CreateQuery<OrderDetail>("Order_Details")
                 .Expand("Order")
                 .ToList();
 
             // Létrehozzuk a SupplierInfo objektumokat a beszállítókhoz és a hozzájuk kapcsolódó termékeket
-            var supplierInfo = suppliers.Select(supplier => new SupplierInfo
+            List<SupplierInfo> supplierInfo = suppliers.Select(supplier => new SupplierInfo
             {
                 SupplierID = supplier.SupplierID,
                 CompanyName = supplier.CompanyName,
@@ -53,10 +59,14 @@ namespace NorthwindBackend.Services
                             .Sum(od => od.UnitPrice * od.Quantity)
                     })
                     .ToList()
-            });
+            }).ToList();
 
             // Visszaadjuk a beszállítók és az általuk szállított termékek listáját
-            return supplierInfo.ToList();
+            return await Task.FromResult(supplierInfo);
         }
+
+
+
+
     }
 }
