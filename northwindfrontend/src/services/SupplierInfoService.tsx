@@ -15,7 +15,7 @@ const SupplierInfoService = {
         
         console.error("An error occurred during the request:", error);
   
-        // Tovább dobja a hibát a hívó kód felé
+        
         throw error;
       }
     },

@@ -1,5 +1,5 @@
 import axios from "axios";
-import ProductModel from "../models/ProductModel"; // Az elérési út legyen a megfelelő helyre mutató
+import ProductModel from "../models/ProductModel"; 
 
 const API_BASE_URL = "https://localhost:7215/api";
 
@@ -14,7 +14,7 @@ const productService = {
      
       console.error("An error occurred during the request:", error);
 
-      // Tovább dobja a hibát a hívó kód felé
+      
       throw error;
     }
   },

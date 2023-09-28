@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import productService from "../../services/ProductService"; // Az elérési út legyen a megfelelő helyre mutató
+import productService from "../../services/ProductService";
 import ProductModel from "../../models/ProductModel";
 import Card from "../UI/Card";
 
