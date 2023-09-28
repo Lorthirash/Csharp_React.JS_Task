@@ -11,8 +11,8 @@ const productService = {
       );
       return response.data;
     } catch (error) {
-      // Hibakezelés, például naplózás
-      console.error("Hiba történt a kérés során:", error);
+     
+      console.error("An error occurred during the request:", error);
 
       // Tovább dobja a hibát a hívó kód felé
       throw error;
