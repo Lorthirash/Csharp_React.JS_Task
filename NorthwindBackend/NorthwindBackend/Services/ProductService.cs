@@ -43,7 +43,8 @@ namespace NorthwindBackend.Services
                 .ToList();
 
             // Létrehozzuk a SupplierInfo objektumokat a beszállítókhoz és a hozzájuk kapcsolódó termékeket
-            List<SupplierInfo> supplierInfo = suppliers.Select(supplier => new SupplierInfo
+            List<SupplierInfo> supplierInfo = suppliers
+                .Select(supplier => new SupplierInfo
             {
                 SupplierID = supplier.SupplierID,
                 CompanyName = supplier.CompanyName,
