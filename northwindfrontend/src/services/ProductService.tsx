@@ -1,13 +1,13 @@
 import axios from "axios";
-import ProductModel from "../models/ProductModel"; 
+import ProductModel from "../models/ProductModel";
+import { environment } from "../environments/environment";
 
-const API_BASE_URL = "https://localhost:7215/api";
 
 const productService = {
   getAvailableProducts: async (): Promise<ProductModel[]> => {
     try {
       const response = await axios.get<ProductModel[]>(
-        `${API_BASE_URL}/Product/AvailableProducts`
+        `${environment.apiUrl}/Product/AvailableProducts`
       );
       return response.data;
     } catch (error) {
